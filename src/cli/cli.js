@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk");
-
 const Deepseek = require("../ai/deepseek")
 
 class Cli {
