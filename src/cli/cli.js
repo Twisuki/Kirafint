@@ -12,6 +12,14 @@ try {
 	console.error(chalk.red("Can't find deepseek.json!"));
 }
 
+let userData = {};
+try {
+	const data = fs.readFileSync("../config/user.json", "utf8");
+	dsData = JSON.parse(data);
+} catch (err) {
+	console.error(chalk.red("Can't find user.json!"));
+}
+
 // 主控制
 class Cli {
 	constructor(mode) {
@@ -43,9 +51,20 @@ class Cli {
 						{
 							type: "input",
 							name: "userInput",
-							message: chalk.green("User >")
+							message: chalk.green(`${userData.name} >`)
 						}
 					]);
+
+					msg.push({role: 'user', content: userInput});
+
+					try {
+						process.stdout.write(chalk.blue('DeepSeek: '));
+						const response = await this.ds.chat(msg);
+						console.log(chalk.blue(response));
+						msg.push({role: 'assistant', content: response});
+					} catch (error) {
+						console.error(chalk.red(`Error: ${error.message}`));
+					}
 				}
 
 				break;
