@@ -1,28 +1,43 @@
 const fs = require("fs");
 const chalk = require("chalk");
-import OpenAI from "openai";
+const axios = require('axios');
 
 // 读取用户JSON
 let json = {};
 try {
-	const data = fs.readFileSync("../config/user.json", "utf8");
+	const data = fs.readFileSync("../config/deepseek.json", "utf8");
 	json = JSON.parse(data);
 } catch (err) {
-	console.error(chalk.red("Can't find user.json!"));
+	console.error(chalk.red("Can't find deepseek.json!"));
 }
 
 
 // Deepseek接口
-const openai = new OpenAI({
-	baseURL: "https://api.deepseek.com",
-	apiKey: json.key
-});
-
-async function main() {
-	const completion = await openai.chat.completions.create({
-		messages: [{role: "system", content: json.content}],
-		model: "deepseek-chat",
-	});
+class Deepseek {
+	async chat(messages, model = "deepseek-chat") {
+		try {
+			const response = await axios.post(
+				json.url,
+				{
+					model,
+					messages,
+					temperature: 0.7,
+				},
+				{
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${json.key}`,
+					},
+				}
+			);
+			return response.data.choices[0].message.content;
+		} catch (error) {
+			if (error.response) {
+				throw new Error(`API Error: ${error.response.data?.error?.message || error.message}`);
+			}
+			throw new Error(`Unexpected error: ${error.message}`);
+		}
+	}
 }
 
-main();
+module.exports = Deepseek;
