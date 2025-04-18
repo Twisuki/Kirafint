@@ -11,7 +11,6 @@ try {
 	console.error(chalk.red("Can't find deepseek.json!"));
 }
 
-
 // Deepseek接口
 class Deepseek {
 	async chat(messages, model = "deepseek-chat") {
