@@ -4,10 +4,10 @@ const chalk = require("chalk");
 const Deepseek = require("../ai/deepseek")
 
 // 读取用户JSON
-let json = {};
+let dsData = {};
 try {
 	const data = fs.readFileSync("../config/deepseek.json", "utf8");
-	json = JSON.parse(data);
+	dsData = JSON.parse(data);
 } catch (err) {
 	console.error(chalk.red("Can't find deepseek.json!"));
 }
@@ -27,7 +27,7 @@ class Cli {
 			case 1:
 				// 精准
 				const msg = [];
-				msg.push({role: "user", content: json.content.PrecisionModeInit});
+				msg.push({role: "user", content: dsData.content.PrecisionModeInit});
 
 				try {
 					process.stdout.write(chalk.blue('DeepSeek: '));

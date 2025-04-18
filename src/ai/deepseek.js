@@ -3,10 +3,10 @@ const chalk = require("chalk");
 const axios = require('axios');
 
 // 读取用户JSON
-let json = {};
+let dsData = {};
 try {
 	const data = fs.readFileSync("../config/deepseek.json", "utf8");
-	json = JSON.parse(data);
+	dsData = JSON.parse(data);
 } catch (err) {
 	console.error(chalk.red("Can't find deepseek.json!"));
 }
@@ -16,7 +16,7 @@ class Deepseek {
 	async chat(messages, model = "deepseek-chat") {
 		try {
 			const response = await axios.post(
-				json.url,
+				dsData.url,
 				{
 					model,
 					messages,
@@ -25,7 +25,7 @@ class Deepseek {
 				{
 					headers: {
 						"Content-Type": "application/json",
-						"Authorization": `Bearer ${json.key}`,
+						"Authorization": `Bearer ${dsData.key}`,
 					},
 				}
 			);
