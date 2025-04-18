@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {Command} = require('commander');
+const {Command} = require("commander");
 
 const Cli = require("./cli/cli");
 
