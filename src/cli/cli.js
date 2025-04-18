@@ -1,12 +1,11 @@
 const inquirer = require("inquirer");
-const fs = require("fs");
 const chalk = require("chalk");
 const Deepseek = require("../ai/deepseek")
 
 // 读取用户JSON
 let dsData = {};
 try {
-	const data = fs.readFileSync("../config/deepseek.json", "utf8");
+	const data = require("/src/config/deepseek.json");
 	dsData = JSON.parse(data);
 } catch (err) {
 	console.error(chalk.red("Can't find deepseek.json!"));
@@ -14,7 +13,7 @@ try {
 
 let userData = {};
 try {
-	const data = fs.readFileSync("../config/user.json", "utf8");
+	const data = require("/src/config/user.json");
 	dsData = JSON.parse(data);
 } catch (err) {
 	console.error(chalk.red("Can't find user.json!"));

@@ -1,11 +1,10 @@
-const fs = require("fs");
 const chalk = require("chalk");
 const axios = require('axios');
 
 // 读取用户JSON
 let dsData = {};
 try {
-	const data = fs.readFileSync("../config/deepseek.json", "utf8");
+	const data = require("/src/config/deepseek.json");
 	dsData = JSON.parse(data);
 } catch (err) {
 	console.error(chalk.red("Can't find deepseek.json!"));
