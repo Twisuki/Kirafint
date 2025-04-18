@@ -9,6 +9,8 @@ class Cli {
 	async start () {
 		console.log(chalk.green.bold("Kirafint Cli"));
 		console.log(chalk.blueBright("Mode: ", this.mode));
+
+
 	}
 }
 
