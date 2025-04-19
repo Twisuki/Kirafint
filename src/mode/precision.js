@@ -31,8 +31,8 @@ class Precision {
 		const msg = [];
 		// 初始化
 		const content = dsData.content.PrecisionMode.init.join("\n");
-		msg.push({role: "user", content: content});
 		console.log(chalk.green("[INIT]"), chalk.greenBright(content));
+		msg.push({role: "user", content: content});
 
 		const response = await this.ds.chat(msg);
 		console.log(chalk.green("[INIT]"), chalk.blueBright(response));
@@ -47,16 +47,14 @@ class Precision {
 					message: chalk.green(`${userData.name} >`)
 				}
 			]);
+			const content = userInput + indexData.index;
+			msg.push({role: "user", content: content});
 
-			msg.push({role: "user", content: userInput});
+			const response = await this.ds.chat(msg);
+			console.log(chalk.green("[INDEX]"), chalk.blueBright(response));
+			msg.push({role: "assistant", content: response});
 
-			try {
-				const response = await this.ds.chat(msg);
-				console.log(chalk.green("[INDEX]"), chalk.blueBright(response));
-				msg.push({role: "assistant", content: response});
-			} catch (error) {
-				console.error(chalk.red(`Error: ${error.message}`));
-			}
+			// 获取文章
 		}
 	}
 }
