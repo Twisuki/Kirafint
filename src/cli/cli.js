@@ -1,29 +1,11 @@
 const inquirer = require("inquirer");
 const chalk = require("chalk");
-const Deepseek = require("../ai/deepseek")
-
-// 读取用户JSON
-let dsData = {};
-try {
-	const data = require("/src/config/deepseek.json");
-	dsData = JSON.parse(data);
-} catch (err) {
-	console.error(chalk.red("Can't find deepseek.json!"));
-}
-
-let userData = {};
-try {
-	const data = require("/src/config/user.json");
-	dsData = JSON.parse(data);
-} catch (err) {
-	console.error(chalk.red("Can't find user.json!"));
-}
+const Precision = require("/src/mode/precision");
 
 // 主控制
 class Cli {
 	constructor(mode) {
 		this.mode = mode;
-		this.ds = new Deepseek();
 	}
 
 	async start() {
@@ -32,45 +14,51 @@ class Cli {
 
 		switch (this.mode) {
 			case 1:
-				// 精准
-				const msg = [];
-				msg.push({role: "user", content: dsData.content.PrecisionModeInit});
-
-				try {
-					process.stdout.write(chalk.blue('DeepSeek: '));
-					const response = await this.ds.chat(msg);
-					console.log(chalk.blue(response));
-					msg.push({role: 'assistant', content: response});
-				} catch (error) {
-					console.error(chalk.red(`Error: ${error.message}`));
-				}
-
-				while (1) {
-					const {userInput} = await inquirer.prompt([
-						{
-							type: "input",
-							name: "userInput",
-							message: chalk.green(`${userData.name} >`)
-						}
-					]);
-
-					msg.push({role: 'user', content: userInput});
-
-					try {
-						process.stdout.write(chalk.blue('DeepSeek: '));
-						const response = await this.ds.chat(msg);
-						console.log(chalk.blue(response));
-						msg.push({role: 'assistant', content: response});
-					} catch (error) {
-						console.error(chalk.red(`Error: ${error.message}`));
-					}
-				}
-
-				break;
-			default:
-				console.error(chalk.red("Undefined Parameter!"));
+				const precision = new Precision();
+				await precision.chat();
 				break;
 		}
+		// switch (this.mode) {
+		// 	case 1:
+		// 		// 精准
+		// 		const msg = [];
+		// 		msg.push({role: "user", content: dsData.content.PrecisionModeInit});
+		//
+		// 		try {
+		// 			process.stdout.write(chalk.blue('DeepSeek: '));
+		// 			const response = await this.ds.chat(msg);
+		// 			console.log(chalk.blue(response));
+		// 			msg.push({role: 'assistant', content: response});
+		// 		} catch (error) {
+		// 			console.error(chalk.red(`Error: ${error.message}`));
+		// 		}
+		//
+		// 		while (1) {
+		// 			const {userInput} = await inquirer.prompt([
+		// 				{
+		// 					type: "input",
+		// 					name: "userInput",
+		// 					message: chalk.green(`${userData.name} >`)
+		// 				}
+		// 			]);
+		//
+		// 			msg.push({role: 'user', content: userInput});
+		//
+		// 			try {
+		// 				process.stdout.write(chalk.blue('DeepSeek: '));
+		// 				const response = await this.ds.chat(msg);
+		// 				console.log(chalk.blue(response));
+		// 				msg.push({role: 'assistant', content: response});
+		// 			} catch (error) {
+		// 				console.error(chalk.red(`Error: ${error.message}`));
+		// 			}
+		// 		}
+		//
+		// 		break;
+		// 	default:
+		// 		console.error(chalk.red("Undefined Parameter!"));
+		// 		break;
+		// }
 	}
 }
 
