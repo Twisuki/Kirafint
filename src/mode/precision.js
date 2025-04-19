@@ -9,11 +9,17 @@ try {
 } catch (err) {
 	console.error(chalk.red("Can't find deepseek.json!"));
 }
-let userData = {}
+let userData = {};
 try {
 	userData = require("../config/user.json");
 } catch (err) {
 	console.error(chalk.red("Can't find user.json!"));
+}
+let indexData = {};
+try {
+	indexData = require("../data/index.json");
+} catch (err) {
+	console.error(chalk.red("Can't find index.json!"));
 }
 
 class Precision {
