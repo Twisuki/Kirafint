@@ -1,13 +1,18 @@
 const chalk = require("chalk");
-const axios = require('axios');
+const axios = require("axios");
 
-// 读取用户JSON
+// 读取JSON
 let dsData = {};
 try {
-	const data = require("/src/config/deepseek.json");
-	dsData = JSON.parse(data);
+	dsData = require("../config/deepseek.json");
 } catch (err) {
 	console.error(chalk.red("Can't find deepseek.json!"));
+}
+let userData = {}
+try {
+	userData = require("../config/user.json");
+} catch (err) {
+	console.error(chalk.red("Can't find user.json!"));
 }
 
 // Deepseek接口
@@ -24,7 +29,7 @@ class Deepseek {
 				{
 					headers: {
 						"Content-Type": "application/json",
-						"Authorization": `Bearer ${dsData.key}`,
+						"Authorization": `Bearer ${userData.dsKey}`,
 					},
 				}
 			);

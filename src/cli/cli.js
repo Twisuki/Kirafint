@@ -1,5 +1,5 @@
 const chalk = require("chalk");
-const Precision = require("/src/mode/precision");
+const Precision = require("../mode/precision");
 
 // 主控制
 class Cli {
@@ -15,6 +15,9 @@ class Cli {
 			case 1:
 				const precision = new Precision();
 				await precision.chat();
+				break;
+			default:
+				console.error(chalk.red("Undefined Parameter!"));
 				break;
 		}
 		// switch (this.mode) {
@@ -54,10 +57,6 @@ class Cli {
 		// 		}
 		//
 		// 		break;
-		// 	default:
-		// 		console.error(chalk.red("Undefined Parameter!"));
-		// 		break;
-		// }
 	}
 }
 
