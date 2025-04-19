@@ -24,9 +24,7 @@ class Precision {
 		const msg = [];
 		msg.push({role: "user", content: dsData.content.PrecisionModeInit});
 		const response = await this.ds.chat(msg);
-		if (response) {
-			console.log(response);
-		}
+		console.log(chalk.green("[INIT]"), chalk.blueBright(response));
 
 		while (1) {
 			const {userInput} = await inquirer.prompt([
@@ -40,9 +38,9 @@ class Precision {
 			msg.push({role: "user", content: userInput});
 
 			try {
-				process.stdout.write(chalk.blue("Kirafint: "));
+				process.stdout.write(chalk.blueBright("Kirafint: "));
 				const response = await this.ds.chat(msg);
-				console.log(chalk.blue(response));
+				console.log(chalk.blueBright(response));
 				msg.push({role: "assistant", content: response});
 			} catch (error) {
 				console.error(chalk.red(`Error: ${error.message}`));
