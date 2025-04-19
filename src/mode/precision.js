@@ -25,7 +25,7 @@ class Precision {
 		msg.push({role: "user", content: dsData.content.PrecisionModeInit});
 		const response = await this.ds.chat(msg);
 		if (response) {
-			console.info(response);
+			console.log(response);
 		}
 
 		while (1) {
