@@ -25,7 +25,7 @@ class Precision {
 		msg.push({role: "user", content: dsData.content.PrecisionModeInit});
 		const response = await this.ds.chat(msg);
 		if (response) {
-			console.debug(response);
+			console.info(response);
 		}
 
 		while (1) {
@@ -40,7 +40,7 @@ class Precision {
 			msg.push({role: "user", content: userInput});
 
 			try {
-				process.stdout.write(chalk.blue("DeepSeek: "));
+				process.stdout.write(chalk.blue("Kirafint: "));
 				const response = await this.ds.chat(msg);
 				console.log(chalk.blue(response));
 				msg.push({role: "assistant", content: response});
