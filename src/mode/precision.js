@@ -20,14 +20,20 @@ class Precision {
 	constructor() {
 		this.ds = new Deepseek();
 	}
-	async chat () {
+
+	async chat() {
 		const msg = [];
-		msg.push({role: "user", content: dsData.content.PrecisionModeInit});
+		// 初始化
+		const content = dsData.content.PrecisionMode.init.join("\n");
+		msg.push({role: "user", content: content});
+		console.log(chalk.green("[INIT]"), chalk.greenBright(content));
+
 		const response = await this.ds.chat(msg);
 		console.log(chalk.green("[INIT]"), chalk.blueBright(response));
 		msg.push({role: "assistant", content: response});
 
 		while (1) {
+			// 获取输入
 			const {userInput} = await inquirer.prompt([
 				{
 					type: "input",
