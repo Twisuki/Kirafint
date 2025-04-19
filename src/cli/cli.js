@@ -26,43 +26,6 @@ class Cli {
 				console.error(chalk.red(`Undefined Parameter ${mode}`));
 				break;
 		}
-		// switch (this.mode) {
-		// 	case 1:
-		// 		// 精准
-		// 		const msg = [];
-		// 		msg.push({role: "user", content: dsData.content.PrecisionModeInit});
-		//
-		// 		try {
-		// 			process.stdout.write(chalk.blue('DeepSeek: '));
-		// 			const response = await this.ds.chat(msg);
-		// 			console.log(chalk.blue(response));
-		// 			msg.push({role: 'assistant', content: response});
-		// 		} catch (error) {
-		// 			console.error(chalk.red(`Error: ${error.message}`));
-		// 		}
-		//
-		// 		while (1) {
-		// 			const {userInput} = await inquirer.prompt([
-		// 				{
-		// 					type: "input",
-		// 					name: "userInput",
-		// 					message: chalk.green(`${userData.name} >`)
-		// 				}
-		// 			]);
-		//
-		// 			msg.push({role: 'user', content: userInput});
-		//
-		// 			try {
-		// 				process.stdout.write(chalk.blue('DeepSeek: '));
-		// 				const response = await this.ds.chat(msg);
-		// 				console.log(chalk.blue(response));
-		// 				msg.push({role: 'assistant', content: response});
-		// 			} catch (error) {
-		// 				console.error(chalk.red(`Error: ${error.message}`));
-		// 			}
-		// 		}
-		//
-		// 		break;
 	}
 }
 
