@@ -1,4 +1,3 @@
-const inquirer = require("inquirer");
 const chalk = require("chalk");
 const Precision = require("/src/mode/precision");
 
