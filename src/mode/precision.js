@@ -41,6 +41,7 @@ class Precision {
 		msg.push({role: "assistant", content: response});
 
 		const initJson = this.jsonAnalysis.getJson(response);
+		console.debug(chalk.yellowBright("JSON", initJson));
 
 		while (1) {
 			// 获取输入
@@ -60,6 +61,7 @@ class Precision {
 
 			// 获取文章
 			const indexJson = this.jsonAnalysis.getJson(response);
+			console.debug(chalk.yellowBright("JSON", indexJson));
 		}
 	}
 }

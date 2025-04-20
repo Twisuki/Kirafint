@@ -1,14 +1,23 @@
+const chalk = require("chalk");
+
 class JsonAnalysis {
 	constructor() {
 
 	}
 
 	async getJson (msg) {
-		console.debug(msg);
-		const regex = /\{([\S\s].?)"jsonStart": 0,([\S\s].?)"jsonEnd": 0([\S\s].?)}/;
+		const regex = /\{[\s\n]*"jsonStart":\s*0,[\s\S]*?"jsonEnd":\s*0[\s\n]*\}/;
 		const result = msg.match(regex);
-		console.debug(result);
-		return result[0];
+
+		if (!result) {
+			console.error(chalk.red("No regex matched!"));
+		}
+
+		try {
+			return JSON.parse(result[0]);
+		} catch (err) {
+			console.error(chalk.red("Illegal JSON format!"))
+		}
 	}
 }
 
