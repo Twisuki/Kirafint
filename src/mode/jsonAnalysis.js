@@ -14,7 +14,7 @@ class JsonAnalysis {
 		}
 
 		try {
-			return JSON.parse(result[0]);
+			return JSON.parse(result[0]).json;
 		} catch (err) {
 			console.error(chalk.red("Illegal JSON format!"))
 		}
