@@ -33,15 +33,15 @@ class Precision {
 		const msg = [];
 		// 初始化
 		const content = dsData.content.PrecisionMode.init.join("\n");
-		console.debug(chalk.greenBright("[LC INIT]", content));
+		console.debug(chalk.greenBright("[INIT]", content));
 		msg.push({role: "user", content: content});
 
 		const response = await this.ds.chat(msg);
-		console.debug(chalk.blueBright("[DS INIT]", response));
+		console.debug(chalk.blueBright("[INIT]", response));
 		msg.push({role: "assistant", content: response});
 
 		const initJson = this.jsonAnalysis.getJson(response);
-		console.debug(chalk.yellowBright("JSON", initJson));
+		console.debug(chalk.yellowBright("[JSON]", initJson));
 
 		while (1) {
 			// 获取输入
@@ -53,6 +53,7 @@ class Precision {
 				}
 			]);
 			const content = userInput + indexData.index;
+			console.debug(chalk.greenBright("[index]", content));
 			msg.push({role: "user", content: content});
 
 			const response = await this.ds.chat(msg);
@@ -62,6 +63,7 @@ class Precision {
 			// 获取文章
 			const indexJson = this.jsonAnalysis.getJson(response);
 			console.debug(chalk.yellowBright("JSON", indexJson));
+
 		}
 	}
 }

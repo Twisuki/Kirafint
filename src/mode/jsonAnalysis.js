@@ -6,7 +6,7 @@ class JsonAnalysis {
 	}
 
 	async getJson (msg) {
-		const regex = /\{[\s\n]*"jsonStart":\s*0,[\s\S]*?"jsonEnd":\s*0[\s\n]*\}/;
+		const regex = /\{\s*"jsonStart"\s*:\s*0\s*,\s*([\s\S]*?)\s*"jsonEnd"\s*:\s*0\s*\}/;
 		const result = msg.match(regex);
 
 		if (!result) {
