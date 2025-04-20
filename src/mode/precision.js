@@ -31,11 +31,11 @@ class Precision {
 		const msg = [];
 		// 初始化
 		const content = dsData.content.PrecisionMode.init.join("\n");
-		console.log(chalk.green("[INIT]"), chalk.greenBright(content));
+		console.debug(chalk.green("[LC INIT]"), chalk.greenBright(content));
 		msg.push({role: "user", content: content});
 
 		const response = await this.ds.chat(msg);
-		console.log(chalk.green("[INIT]"), chalk.blueBright(response));
+		console.debug(chalk.green("[DS INIT]"), chalk.blueBright(response));
 		msg.push({role: "assistant", content: response});
 
 		while (1) {
@@ -51,7 +51,7 @@ class Precision {
 			msg.push({role: "user", content: content});
 
 			const response = await this.ds.chat(msg);
-			console.log(chalk.green("[INDEX]"), chalk.blueBright(response));
+			console.debug(chalk.green("[INDEX]"), chalk.blueBright(response));
 			msg.push({role: "assistant", content: response});
 
 			// 获取文章
