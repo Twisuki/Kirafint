@@ -40,8 +40,8 @@ class Precision {
 		console.debug(chalk.blueBright("[INIT]", response));
 		msg.push({role: "assistant", content: response});
 
-		const initJson = this.jsonAnalysis.getJson(response);
-		console.debug(chalk.yellowBright("[JSON]", initJson));
+		const initJson = await this.jsonAnalysis.getJson(response);
+		console.debug(chalk.yellowBright("[JSON]", JSON.stringify(initJson)));
 
 		while (1) {
 			// 获取输入
@@ -52,7 +52,9 @@ class Precision {
 					message: chalk.green(`${userData.name} >`)
 				}
 			]);
-			const content = userInput + indexData.index;
+
+			// 拼接问题
+			const content = userInput + "\n" + JSON.stringify(indexData.index);
 			console.debug(chalk.greenBright("[index]", content));
 			msg.push({role: "user", content: content});
 
@@ -61,8 +63,8 @@ class Precision {
 			msg.push({role: "assistant", content: response});
 
 			// 获取文章
-			const indexJson = this.jsonAnalysis.getJson(response);
-			console.debug(chalk.yellowBright("JSON", indexJson));
+			const indexJson = await this.jsonAnalysis.getJson(response);
+			console.debug(chalk.yellowBright("[JSON]", JSON.stringify(indexJson)));
 
 		}
 	}
