@@ -86,10 +86,30 @@ class Precision {
 	async chat () {
 		const msg = [];
 
+		// 初始化
 		msg.push(this.chatInit(msg));
 
 		while (1) {
+			// 获取输入
+			const {question} = await inquirer.prompt([
+				{
+					type: "input",
+					name: "userInput",
+					message: chalk.green(`${userData.name} >`)
+				}
+			]);
 
+			// 第一次调用
+			const content = question + "\n" + JSON.stringify(catalogueData.index);
+			msg.push({role: "user", content: content});
+
+			const response = await this.Deepseek.getResponse(msg);
+			msg.push({role: "assistant", content: response});
+
+			const dsJson = this.JsonAnalysis.getJson(response);
+
+			// 第二次调用
+			msg.push(this.getAnswer(msg, dsJson.dataNeeded))
 		}
 	}
 
@@ -103,7 +123,20 @@ class Precision {
 		return msg;
 	}
 
-	async
+	async getAnswer (msg, dataNeeded) {
+		const content = JSON.stringify(dataNeeded);
+		msg.push({role: "user", content: content});
+
+		const response = await this.Deepseek.getResponse(msg);
+		msg.push({role: "assistant", content: response});
+
+		const dsJson = this.JsonAnalysis.getJson(response);
+
+		console.log(chalk.blueBright("$ Kirafint > ", dsJson.msgResponse));
+
+		return msg;
+	}
+
 }
 
 module.exports = Precision;
