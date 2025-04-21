@@ -19,8 +19,14 @@ module.exports = {
 		}
 	},
 	custom (label, color, msg) {
-		if (userData.log.custom) {
-			console.log(chalk.hex(color)(`[${label}] `), msg);
+		if (label in userData.log.custom) {
+			if (userData.log.custom["label"]) {
+				console.log(chalk.hex(color)(`[${label}] `), msg);
+			}
+		} else {
+			if (userData.log.custom.default) {
+				console.log(chalk.hex(color)(`[${label}] `), msg);
+			}
 		}
 	}
 };
