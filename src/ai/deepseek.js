@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const axios = require("axios");
 const JsonLoader = require("../config/jsonLoader");
 
