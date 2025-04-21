@@ -37,7 +37,20 @@ Kirafint
 ```src/config/user.json
 {
 	"name": "Twisuki",
-	"dsKey": YOUR_DEEPSEEK_API_KEY
+	"dsKey": YOUR_DEEPSEEK_API_KEY,
+	"log": {
+		"info": true,
+		"debug": true,
+		"error": true,
+		"custom": {
+			"INIT": true,
+			"GET": true,
+			"RES": true,
+			"JSON": true,
+			"all": false,
+			"default": true
+		}
+	}
 }
 ```
 
