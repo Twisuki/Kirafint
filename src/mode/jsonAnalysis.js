@@ -1,7 +1,7 @@
 const chalk = require("chalk");
 
 class JsonAnalysis {
-	constructor() {
+	constructor () {
 
 	}
 

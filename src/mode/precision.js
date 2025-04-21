@@ -10,10 +10,11 @@ const userData = JsonLoader.getJson("user");
 const dsData = JsonLoader.getJson("deepseek");
 
 class Precision {
-	constructor() {
+	constructor () {
 		this.Deepseek = new Deepseek();
 		this.JsonAnalysis = new JsonAnalysis();
 	}
+
 	//
 	// async chat() {
 	// 	const msg = [];

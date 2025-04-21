@@ -3,15 +3,15 @@ const Precision = require("../mode/precision");
 
 // 主控制
 class Cli {
-	constructor(mode) {
+	constructor (mode) {
 		this.mode = mode;
 	}
 
-	async start() {
+	async start () {
 		console.log(chalk.green.bold("Kirafint Cli"));
 		console.log(chalk.blueBright("Mode: ", this.mode));
 
-		const mode  = Number(this.mode);
+		const mode = Number(this.mode);
 		switch (mode) {
 			case 1:
 				const precision = new Precision();
