@@ -2,26 +2,12 @@ const inquirer = require("inquirer");
 const chalk = require("chalk");
 const Deepseek = require("../ai/deepseek");
 const JsonAnalysis = require("./jsonAnalysis");
+const JsonLoader = require("../config/jsonLoader");
 
 // 读取JSON
-let dsData = {};
-try {
-	dsData = require("../config/deepseek.json");
-} catch (err) {
-	console.error(chalk.red("Can't find deepseek.json!"));
-}
-let userData = {};
-try {
-	userData = require("../config/user.json");
-} catch (err) {
-	console.error(chalk.red("Can't find user.json!"));
-}
-let indexData = {};
-try {
-	indexData = require("../data/index.json");
-} catch (err) {
-	console.error(chalk.red("Can't find index.json!"));
-}
+const catalogueData = JsonLoader.getJson("catelogue");
+const userData = JsonLoader.getJson("user");
+const dsData = JsonLoader.getJson("deepseek");
 
 class Precision {
 	constructor() {
@@ -54,7 +40,7 @@ class Precision {
 			]);
 
 			// 拼接问题
-			const qustionContent = userInput + "\n" + JSON.stringify(indexData.index);
+			const qustionContent = userInput + "\n" + JSON.stringify(catalogueData.index);
 			// console.debug(chalk.greenBright("[INDEX]", qustionContent));
 			msg.push({role: "user", content: qustionContent});
 
@@ -69,7 +55,7 @@ class Precision {
 			const dataNeeded = [];
 			for (const key in indexJson.dataNeeded) {
 				let count = 0;
-				for (const article of indexData.article) {
+				for (const article of catalogueData.article) {
 					if (article.tag === key) {
 						dataNeeded.push(article);
 						count ++;
