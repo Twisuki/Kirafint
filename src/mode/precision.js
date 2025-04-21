@@ -3,6 +3,7 @@ const chalk = require("chalk");
 const Deepseek = require("../ai/deepseek");
 const JsonAnalysis = require("./jsonAnalysis");
 const JsonLoader = require("../config/jsonLoader");
+const logger = require("../utils/logger");
 
 // 读取JSON
 const catalogueData = JsonLoader.getJson("catalogue");
@@ -88,7 +89,7 @@ class Precision {
 		const msg = [];
 
 		// 初始化
-		msg.push(this.chatInit(msg));
+		msg.push(await this.chatInit(msg));
 
 		while (1) {
 			// 获取输入
@@ -107,10 +108,10 @@ class Precision {
 			const response = await this.Deepseek.getResponse(msg);
 			msg.push({role: "assistant", content: response});
 
-			const dsJson = this.JsonAnalysis.getJson(response);
+			const dsJson = await this.JsonAnalysis.getJson(response);
 
 			// 第二次调用
-			msg.push(this.getAnswer(msg, dsJson.dataNeeded))
+			msg.push(await this.getAnswer(msg, dsJson.dataNeeded))
 		}
 	}
 
