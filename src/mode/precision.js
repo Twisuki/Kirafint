@@ -5,7 +5,7 @@ const JsonAnalysis = require("./jsonAnalysis");
 const JsonLoader = require("../config/jsonLoader");
 
 // 读取JSON
-const catalogueData = JsonLoader.getJson("catelogue");
+const catalogueData = JsonLoader.getJson("catalogue");
 const userData = JsonLoader.getJson("user");
 const dsData = JsonLoader.getJson("deepseek");
 
