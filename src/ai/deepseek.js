@@ -1,19 +1,10 @@
 const chalk = require("chalk");
 const axios = require("axios");
+const JsonLoader = require("../config/jsonLoader");
 
 // 读取JSON
-let dsData = {};
-try {
-	dsData = require("../config/deepseek.json");
-} catch (err) {
-	console.error(chalk.red("Can't find deepseek.json!"));
-}
-let userData = {}
-try {
-	userData = require("../config/user.json");
-} catch (err) {
-	console.error(chalk.red("Can't find user.json!"));
-}
+const userData = JsonLoader.getJson("user");
+const dsData = JsonLoader.getJson("deepseek");
 
 // Deepseek接口
 class Deepseek {

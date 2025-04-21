@@ -15,7 +15,7 @@ try {
 }
 let catalogueData = {};
 try {
-	catalogueData = require("../data/index.json");
+	catalogueData = require("../data/catelogue.json");
 } catch (err) {
 	console.error(chalk.red("Can't find index.json!"));
 }
