@@ -89,7 +89,8 @@ class Precision {
 		const msg = [];
 
 		// 初始化
-		msg.push(await this.chatInit(msg));
+		await this.chatInit(msg);
+		logger.info(msg);
 
 		while (1) {
 			// 获取输入
@@ -111,7 +112,7 @@ class Precision {
 			const dsJson = await this.JsonAnalysis.getJson(response);
 
 			// 第二次调用
-			msg.push(await this.getAnswer(msg, dsJson.dataNeeded))
+			await this.getAnswer(msg, dsJson.dataNeeded);
 		}
 	}
 
