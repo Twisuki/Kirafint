@@ -90,7 +90,6 @@ class Precision {
 
 		// 初始化
 		await this.chatInit(msg);
-		logger.info(msg);
 
 		while (1) {
 			// 获取输入
