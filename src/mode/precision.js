@@ -69,7 +69,7 @@ class Precision {
 			const dataNeeded = [];
 			for (const key in indexJson.dataNeeded) {
 				let count = 0;
-				for (const article in indexData.article) {
+				for (const article of indexData.article) {
 					if (article.tag === key) {
 						dataNeeded.push(article);
 						count ++;
