@@ -8,7 +8,7 @@ const dsData = JsonLoader.getJson("deepseek");
 
 // Deepseek接口
 class Deepseek {
-	async chat(messages, model = "deepseek-chat") {
+	async getResponse(messages, model = "deepseek-chat") {
 		try {
 			const response = await axios.post(
 				dsData.url,

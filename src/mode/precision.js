@@ -22,7 +22,7 @@ class Precision {
 		// console.debug(chalk.greenBright("[INIT]", content));
 		msg.push({role: "user", content: content});
 
-		const response = await this.ds.chat(msg);
+		const response = await this.ds.getResponse(msg);
 		// console.debug(chalk.blueBright("[INIT]", response));
 		msg.push({role: "assistant", content: response});
 
@@ -44,7 +44,7 @@ class Precision {
 			// console.debug(chalk.greenBright("[INDEX]", qustionContent));
 			msg.push({role: "user", content: qustionContent});
 
-			const qustionResponse = await this.ds.chat(msg);
+			const qustionResponse = await this.ds.getResponse(msg);
 			// console.debug(chalk.blueBright("[INDEX]",qustionResponse));
 			msg.push({role: "assistant", content: qustionResponse});
 
@@ -72,7 +72,7 @@ class Precision {
 			msg.push({role: "user", content: dataContent});
 
 			// 获取回复
-			const answerResponse = await this.ds.chat(msg);
+			const answerResponse = await this.ds.getResponse(msg);
 			// console.debug(chalk.blueBright("[INDEX]", answerResponse));
 			msg.push({role: "assistant", content: answerResponse});
 
