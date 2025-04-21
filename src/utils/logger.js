@@ -18,7 +18,7 @@ module.exports = {
 			console.log(chalk.redBright("[ERROR] "), msg);
 		}
 	},
-	custom (label, color, msg) {
+	custom (label, color = "#00aaff", msg) {
 		if (label in userData.log.custom) {
 			if (userData.log.custom["label"]) {
 				console.log(chalk.hex(color)(`[${label}] `), msg);
