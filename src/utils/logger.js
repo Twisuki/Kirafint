@@ -1,13 +1,21 @@
 const chalk = require("chalk");
+const JsonLoader = require("../config/jsonLoader");
+const userData = JsonLoader.getJson("user");
 
 function info (msg) {
-	console.log(chalk.blueBright("[INFO] "), msg);
+	if (userData.log) {
+		console.log(chalk.blueBright("[INFO] "), msg);
+	}
 }
 
 function debug (msg) {
-	console.log(chalk.yellowBright("[DEBUG] "), msg);
+	if (userData.log) {
+		console.log(chalk.yellowBright("[DEBUG] "), msg);
+	}
 }
 
 function error (msg) {
-	console.log(chalk.redBright("[ERROR] "), msg);
+	if (userData.log) {
+		console.log(chalk.redBright("[ERROR] "), msg);
+	}
 }
