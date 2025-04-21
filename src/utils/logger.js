@@ -19,13 +19,15 @@ module.exports = {
 		}
 	},
 	custom (label, color = "#00aaff", msg) {
-		if (label in userData.log.custom) {
-			if (userData.log.custom[label]) {
-				console.log(chalk.hex(color)(`[${label}] `), msg);
-			}
-		} else {
-			if (userData.log.custom.default) {
-				console.log(chalk.hex(color)(`[${label}] `), msg);
+		if (userData.log.custom.all) {
+			if (label in userData.log.custom) {
+				if (userData.log.custom[label]) {
+					console.log(chalk.hex(color)(`[${label}] `), msg);
+				}
+			} else {
+				if (userData.log.custom.default) {
+					console.log(chalk.hex(color)(`[${label}] `), msg);
+				}
 			}
 		}
 	}
