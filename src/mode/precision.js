@@ -27,7 +27,7 @@ class Precision {
 			const {question} = await inquirer.prompt([
 				{
 					type: "input",
-					name: "userInput",
+					name: "question",
 					message: chalk.green(`${userData.name} >`)
 				}
 			]);
@@ -68,7 +68,7 @@ class Precision {
 		msg.push({role: "assistant", content: response});
 		logger.custom("RES", "#00aaff", response);
 
-		const dsJson = this.JsonAnalysis.getJson(response);
+		const dsJson = await this.JsonAnalysis.getJson(response);
 		logger.custom("JSON", "#00aaff", dsJson);
 
 		console.log(chalk.blueBright("$ Kirafint > ", dsJson.msgResponse));
