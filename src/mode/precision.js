@@ -81,7 +81,7 @@ class Precision {
 			}
 
 			// 上传文章
-			const dataContent = dataNeeded.toString();
+			const dataContent = JSON.stringify(dataNeeded);
 			console.debug(chalk.greenBright("[DATA]", dataContent));
 			msg.push({role: "user", content: dataContent});
 
