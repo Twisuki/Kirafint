@@ -35,11 +35,14 @@ class Precision {
 			// 第一次调用
 			const content = question + "\n" + JSON.stringify(catalogueData.index);
 			msg.push({role: "user", content: content});
+			logger.custom("GET", "#00aaff", content);
 
 			const response = await this.Deepseek.getResponse(msg);
 			msg.push({role: "assistant", content: response});
+			logger.custom("GET", "#00aaff", response);
 
 			const dsJson = await this.JsonAnalysis.getJson(response);
+			logger.custom("JSON", "#00aaff", dsJson);
 
 			// 第二次调用
 			await this.getAnswer(msg, dsJson.dataNeeded);
@@ -49,19 +52,24 @@ class Precision {
 	async chatInit (msg) {
 		const content = dsData.content.PrecisionMode.init.join("\n");
 		msg.push({role: "user", content: content});
+		logger.custom("INIT", "#00aaff", content);
 
 		const response = await this.Deepseek.getResponse(msg);
 		msg.push({role: "assistant", content: response});
+		logger.custom("INIT", "#00aaff", response);
 	}
 
 	async getAnswer (msg, dataNeeded) {
 		const content = JSON.stringify(dataNeeded);
 		msg.push({role: "user", content: content});
+		logger.custom("RES", "#00aaff", content);
 
 		const response = await this.Deepseek.getResponse(msg);
 		msg.push({role: "assistant", content: response});
+		logger.custom("RES", "#00aaff", response);
 
 		const dsJson = this.JsonAnalysis.getJson(response);
+		logger.custom("JSON", "#00aaff", dsJson);
 
 		console.log(chalk.blueBright("$ Kirafint > ", dsJson.msgResponse));
 	}
