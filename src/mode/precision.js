@@ -92,6 +92,8 @@ class Precision {
 
 			const answerJson = await this.jsonAnalysis.getJson(answerResponse);
 			console.debug(chalk.yellowBright("[JSON]", JSON.stringify(answerJson)));
+
+			console.log(chalk.cyanBright("$ Kirafint > ", answerJson.msgResponse));
 		}
 	}
 }
