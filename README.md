@@ -54,4 +54,5 @@ Kirafint
 
 ```bash
 pnpm install
+./kf
 ```
