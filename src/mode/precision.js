@@ -122,8 +122,6 @@ class Precision {
 
 		const response = await this.Deepseek.getResponse(msg);
 		msg.push({role: "assistant", content: response});
-
-		return msg;
 	}
 
 	async getAnswer (msg, dataNeeded) {
@@ -136,8 +134,6 @@ class Precision {
 		const dsJson = this.JsonAnalysis.getJson(response);
 
 		console.log(chalk.blueBright("$ Kirafint > ", dsJson.msgResponse));
-
-		return msg;
 	}
 
 }
