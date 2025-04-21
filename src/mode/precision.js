@@ -66,7 +66,9 @@ class Precision {
 			const indexJson = await this.jsonAnalysis.getJson(response);
 			console.debug(chalk.yellowBright("[JSON]", JSON.stringify(indexJson)));
 
-
+			// for (let tag in indexJson.dataNeeded) {
+			// 	const tagName = tag.key[0];
+			// }
 		}
 	}
 }
