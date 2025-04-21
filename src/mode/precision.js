@@ -54,21 +54,44 @@ class Precision {
 			]);
 
 			// 拼接问题
-			const content = userInput + "\n" + JSON.stringify(indexData.index);
-			console.debug(chalk.greenBright("[index]", content));
-			msg.push({role: "user", content: content});
+			const qustionContent = userInput + "\n" + JSON.stringify(indexData.index);
+			console.debug(chalk.greenBright("[INDEX]", qustionContent));
+			msg.push({role: "user", content: qustionContent});
 
-			const response = await this.ds.chat(msg);
-			console.debug(chalk.blueBright("[INDEX]", response));
-			msg.push({role: "assistant", content: response});
+			const qustionResponse = await this.ds.chat(msg);
+			console.debug(chalk.blueBright("[INDEX]",qustionResponse));
+			msg.push({role: "assistant", content: qustionResponse});
 
 			// 获取文章
-			const indexJson = await this.jsonAnalysis.getJson(response);
+			const indexJson = await this.jsonAnalysis.getJson(qustionResponse);
 			console.debug(chalk.yellowBright("[JSON]", JSON.stringify(indexJson)));
 
-			// for (let tag in indexJson.dataNeeded) {
-			// 	const tagName = tag.key[0];
-			// }
+			const dataNeeded = [];
+			for (const key in indexJson.dataNeeded) {
+				let count = 0;
+				for (const article in indexData.article) {
+					if (article.tag === key) {
+						dataNeeded.push(article);
+						count ++;
+					}
+					if (count >= indexJson.dataNeeded[key]) {
+						break;
+					}
+				}
+			}
+
+			// 上传文章
+			const dataContent = dataNeeded.toString();
+			console.debug(chalk.greenBright("[DATA]", dataContent));
+			msg.push({role: "user", content: dataContent});
+
+			// 获取回复
+			const answerResponse = await this.ds.chat(msg);
+			console.debug(chalk.blueBright("[INDEX]", answerResponse));
+			msg.push({role: "assistant", content: answerResponse});
+
+			const answerJson = await this.jsonAnalysis.getJson(answerResponse);
+			console.debug(chalk.yellowBright("[JSON]", JSON.stringify(answerJson)));
 		}
 	}
 }
