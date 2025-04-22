@@ -42,7 +42,7 @@ class Precision {
 			logger.custom("GET", "#00aaff", response);
 
 			const dsJson = await this.JsonAnalysis.getJson(response);
-			logger.custom("JSON", "#00aaff", dsJson);
+			logger.custom("JSON", "#ffff00", dsJson);
 
 			// 第二次调用
 			await this.getAnswer(msg, dsJson.dataNeeded);
@@ -62,14 +62,14 @@ class Precision {
 	async getAnswer (msg, dataNeeded) {
 		const content = JSON.stringify(dataNeeded);
 		msg.push({role: "user", content: content});
-		logger.custom("RES", "#00aaff", content);
+		logger.custom("RES", "#88ff00", content);
 
 		const response = await this.Deepseek.getResponse(msg);
 		msg.push({role: "assistant", content: response});
-		logger.custom("RES", "#00aaff", response);
+		logger.custom("RES", "#88ff00", response);
 
 		const dsJson = await this.JsonAnalysis.getJson(response);
-		logger.custom("JSON", "#00aaff", dsJson);
+		logger.custom("JSON", "#ffff00", dsJson);
 
 		console.log(chalk.blueBright("$ Kirafint > ", dsJson.msgResponse));
 	}
