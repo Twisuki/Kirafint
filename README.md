@@ -47,13 +47,29 @@ Kirafint
 		"info": true,
 		"debug": true,
 		"error": true,
-		"custom": {
-			"INIT": true,
-			"GET": true,
-			"RES": true,
-			"JSON": true,
-			"all": false,
-			"default": true
+		"custom": true,
+		"tag": {
+			"all": true,
+			"default": {
+				"color": "#00ff88",
+				"enabled": true
+			},
+			"INIT": {
+				"color": "#00aaff",
+				"enabled": true
+			},
+			"GET": {
+				"color": "#ff8800",
+				"enabled": true
+			},
+			"RES": {
+				"color": "#88ff00",
+				"enabled": true
+			},
+			"JSON": {
+				"color": "#ffff00",
+				"enabled": true
+			}
 		}
 	}
 }
