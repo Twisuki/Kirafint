@@ -18,17 +18,9 @@ module.exports = {
 			console.log(chalk.redBright("[ERROR] "), msg);
 		}
 	},
-	custom (label, color = "#00aaff", msg) {
-		if (userData.log.custom.all) {
-			if (label in userData.log.custom) {
-				if (userData.log.custom[label]) {
-					console.log(chalk.hex(color)(`[${label}] `), msg);
-				}
-			} else {
-				if (userData.log.custom.default) {
-					console.log(chalk.hex(color)(`[${label}] `), msg);
-				}
-			}
+	custom (label, color, msg) {
+		if (userData.log.custom) {
+			console.log(chalk.hex(color)(`[${label}] `), msg);
 		}
 	},
 	tag (label, msg) {
