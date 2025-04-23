@@ -20,12 +20,17 @@ Kirafint
 │   │   └── cli.js
 │   ├── config
 │   │   ├── deepseek.json
+│   │   ├── jsonLoader.js
 │   │   └── user.json
 │   ├── data
+│   │   └── catalogue.json
 │   ├── mode
+│   │   ├── jsonAnalysis.js
 │   │   └── precision.js
 │   ├── util
+│   │   └── logger.js
 │   └── index.js
+├── kf.bat
 ├── package.json
 ├── package-lock.json
 ├── pnpm-lock.yaml
