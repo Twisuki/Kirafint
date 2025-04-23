@@ -40,6 +40,7 @@ Kirafint
 
 ## 配置
 
+src/config/user.json
 ```src/config/user.json
 {
 	"name": "Twisuki",
@@ -76,6 +77,7 @@ Kirafint
 }
 ```
 
+.gitignore
 ```.gitignore
 .gitignore
 .idea/
