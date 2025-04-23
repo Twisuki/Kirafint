@@ -30,5 +30,18 @@ module.exports = {
 				}
 			}
 		}
+	},
+	tag (label, msg) {
+		if (userData.log.tag.all) {
+			if (label in userData.log.tag) {
+				if (userData.log.tag[label].enabled) {
+					console.log(chalk.hex(userData.log.tag[label].color)(`[${label}] `), msg);
+				}
+			} else {
+				if (userData.log.tag.default.enabled) {
+					console.log(chalk.hex(userData.log.default.color)(`[${label}] `), msg);
+				}
+			}
+		}
 	}
 };
