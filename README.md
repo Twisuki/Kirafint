@@ -30,6 +30,7 @@ Kirafint
 │   ├── util
 │   │   └── logger.js
 │   └── index.js
+├── .gitignore
 ├── kf.bat
 ├── package.json
 ├── package-lock.json
@@ -73,6 +74,15 @@ Kirafint
 		}
 	}
 }
+```
+
+```.gitignore
+.gitignore
+.idea/
+.vscode/
+node_modules/
+src/config/user.json
+
 ```
 
 ## 使用
