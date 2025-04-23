@@ -60,7 +60,22 @@ class Precision {
 	}
 
 	async getAnswer (msg, dataNeeded) {
-		const content = JSON.stringify(dataNeeded);
+		const article = [];
+		for (const tagName in dataNeeded) {
+			let count = 0;
+			for (const obj of catalogueData.article) {
+				if (obj.tag === tagName) {
+					article.push(JSON.stringify(obj));
+					count ++;
+				}
+
+				if (count >= dataNeeded[tagName]) {
+					break;
+				}
+			}
+		}
+
+		const content = article.toString();
 		msg.push({role: "user", content: content});
 		logger.custom("RES", "#88ff00", content);
 
