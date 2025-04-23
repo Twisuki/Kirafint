@@ -35,16 +35,13 @@ class Precision {
 			// 第一次调用
 			const content = question + "\n" + JSON.stringify(catalogueData.index);
 			msg.push({role: "user", content: content});
-			// logger.custom("GET", "#00aaff", content);
 			logger.tag("GET", content);
 
 			const response = await this.Deepseek.getResponse(msg);
 			msg.push({role: "assistant", content: response});
-			// logger.custom("GET", "#00aaff", response);
 			logger.tag("GET", response);
 
 			const dsJson = await this.JsonAnalysis.getJson(response);
-			// logger.custom("JSON", "#ffff00", dsJson);
 			logger.tag("JSON", dsJson);
 
 			// 第二次调用
@@ -55,12 +52,10 @@ class Precision {
 	async chatInit (msg) {
 		const content = dsData.content.PrecisionMode.init.join("\n");
 		msg.push({role: "user", content: content});
-		// logger.custom("INIT", "#00aaff", content);
 		logger.tag("INIT", content);
 
 		const response = await this.Deepseek.getResponse(msg);
 		msg.push({role: "assistant", content: response});
-		// logger.custom("INIT", "#00aaff", response);
 		logger.tag("INIT", response);
 	}
 
@@ -82,16 +77,13 @@ class Precision {
 
 		const content = article.toString();
 		msg.push({role: "user", content: content});
-		// logger.custom("RES", "#88ff00", content);
 		logger.tag("RES", content);
 
 		const response = await this.Deepseek.getResponse(msg);
 		msg.push({role: "assistant", content: response});
-		// logger.custom("RES", "#88ff00", response);
 		logger.tag("RES", response);
 
 		const dsJson = await this.JsonAnalysis.getJson(response);
-		// logger.custom("JSON", "#ffff00", dsJson);
 		logger.tag("JSON", dsJson);
 
 		console.log(chalk.blueBright("$ Kirafint > ", dsJson.msgResponse));
