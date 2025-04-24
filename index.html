@@ -14,10 +14,12 @@
 		socket.send("Hello server!");
 	}
 
+	// 接收消息
 	socket.onmessage = function (event) {
 		console.log(`接收到: ${event.data}`);
 	}
 
+	// 关闭连接
 	socket.onclose = function (event) {
 		if (event.wasClean) {
 			console.log("连接已关闭");
