@@ -1,5 +1,6 @@
 const chalk = require("chalk");
 const Precision = require("../mode/precision");
+const logger = require("../utils/logger");
 
 // 主控制
 class Cli {
@@ -8,8 +9,8 @@ class Cli {
 	}
 
 	async start () {
-		console.log(chalk.green.bold("Kirafint Cli"));
-		console.log(chalk.blueBright("Mode: ", this.mode));
+		logger.info("Kirafint Cli");
+		logger.info(`Mode: ${this.mode}`);
 
 		const mode = Number(this.mode);
 		switch (mode) {
@@ -19,12 +20,12 @@ class Cli {
 				break;
 
 			default:
-				console.error(chalk.red(`Undefined Parameter ${mode}`));
+				logger.error(`Undefined Parameter ${mode}`);
 				break;
 		}
 	}
 
-	async output () {
+	async output (msg) {
 
 	}
 }
