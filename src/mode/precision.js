@@ -2,8 +2,8 @@ const chalk = require("chalk");
 const Deepseek = require("../ai/deepseek");
 const JsonAnalysis = require("./jsonAnalysis");
 const JsonLoader = require("../config/jsonLoader");
+const Cli = require("../cli/cli");
 const logger = require("../utils/logger");
-const cli = require("../cli/cli");
 
 // 读取JSON
 const catalogueData = JsonLoader.getJson("catalogue");
@@ -14,7 +14,7 @@ class Precision {
 	constructor () {
 		this.Deepseek = new Deepseek();
 		this.JsonAnalysis = new JsonAnalysis();
-		this.cli = new cli();
+		this.Cli = new Cli();
 	}
 
 	async chat () {
@@ -25,7 +25,7 @@ class Precision {
 
 		while (1) {
 			// 获取输入
-			const question = await this.cli.getInput(userData.name);
+			const question = await this.Cli.getInput(userData.name);
 
 			// 第一次调用
 			const content = question + "\n" + JSON.stringify(catalogueData.index);
@@ -81,7 +81,7 @@ class Precision {
 		const dsJson = await this.JsonAnalysis.getJson(response);
 		logger.tag("JSON", dsJson);
 
-		await this.cli.output("$ Kirafint > ", dsJson.msgResponse);
+		await this.Cli.output("$ Kirafint > ", dsJson.msgResponse);
 	}
 
 }
