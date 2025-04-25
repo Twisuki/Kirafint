@@ -5,10 +5,6 @@ const logger = require("../utils/logger");
 
 // 主控制
 class Cli {
-	constructor (mode) {
-		this.mode = mode;
-	}
-
 	async start () {
 		const main = new main(await this.io);
 		await main.start();
