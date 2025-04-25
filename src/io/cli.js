@@ -17,7 +17,7 @@ class Cli {
 					{
 						type: 'input',
 						name: 'answer',
-						message: prompt,
+						message: chalk.green(`${prompt} >`),
 					}
 				]);
 				return answer.answer;
