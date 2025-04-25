@@ -9,7 +9,7 @@ class Main {
 	async start () {
 		logger.info("Kirafint Cli");
 
-		const mode = Number(await this.io.input());
+		const mode = Number(await this.io.input("Mode"));
 		logger.info(`Mode: ${mode}`);
 
 		switch (mode) {
