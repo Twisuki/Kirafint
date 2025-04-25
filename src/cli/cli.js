@@ -1,4 +1,5 @@
 const chalk = require("chalk");
+const inquirer = require("inquirer");
 const Precision = require("../mode/precision");
 const logger = require("../utils/logger");
 
@@ -23,6 +24,19 @@ class Cli {
 				logger.error(`Undefined Parameter ${mode}`);
 				break;
 		}
+	}
+
+	async getInput (name) {
+		// 获取输入
+		const {userInput} = await inquirer.prompt([
+			{
+				type: "input",
+				name: "userInput",
+				message: chalk.green(`${name} >`)
+			}
+		]);
+
+		return userInput;
 	}
 
 	async output (msg) {

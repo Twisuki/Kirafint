@@ -1,4 +1,3 @@
-const inquirer = require("inquirer");
 const chalk = require("chalk");
 const Deepseek = require("../ai/deepseek");
 const JsonAnalysis = require("./jsonAnalysis");
@@ -26,13 +25,7 @@ class Precision {
 
 		while (1) {
 			// 获取输入
-			const {question} = await inquirer.prompt([
-				{
-					type: "input",
-					name: "question",
-					message: chalk.green(`${userData.name} >`)
-				}
-			]);
+			const question = await this.cli.getInput(userData.name);
 
 			// 第一次调用
 			const content = question + "\n" + JSON.stringify(catalogueData.index);
