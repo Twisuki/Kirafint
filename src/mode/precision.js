@@ -81,7 +81,7 @@ class Precision {
 		const dsJson = await this.JsonAnalysis.getJson(response);
 		logger.tag("JSON", dsJson);
 
-		await this.Cli.output("$ Kirafint > ", dsJson.msgResponse);
+		await this.Cli.output(`$ Kirafint > ${dsJson.msgResponse}`);
 	}
 
 }
