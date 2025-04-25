@@ -25,12 +25,12 @@ class Main {
 		}
 	}
 
-	async getInput () {
-
+	async getInput (prompt) {
+		return await this.io.input(prompt);
 	}
 
-	async output () {
-
+	async output (msg) {
+		await this.io.output(msg);
 	}
 }
 
