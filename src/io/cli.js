@@ -1,12 +1,11 @@
 const chalk = require("chalk");
 const inquirer = require("inquirer");
-const main = require("../main");
-const logger = require("../utils/logger");
+const Main = require("../main");
 
 // 主控制
 class Cli {
 	async start () {
-		const main = new main(await this.io);
+		const main = new Main(await this.io);
 		await main.start();
 	}
 
@@ -22,7 +21,7 @@ class Cli {
 				]);
 				return answer.answer;
 			},
-			output: (data) => console.log(chalk.blueBright(data))
+			output: (msg) => console.log(chalk.blueBright(msg))
 		}
 	}
 }
