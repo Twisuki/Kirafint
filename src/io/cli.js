@@ -1,5 +1,6 @@
 const chalk = require("chalk");
 const inquirer = require("inquirer");
+const main = require("../main");
 const logger = require("../utils/logger");
 
 // 主控制
@@ -9,38 +10,24 @@ class Cli {
 	}
 
 	async start () {
-		logger.info("Kirafint Cli");
-		logger.info(`Mode: ${this.mode}`);
+		const main = new main(await this.io);
+		await main.start();
+	}
 
-		const mode = Number(this.mode);
-		switch (mode) {
-			case 1:
-				const Precision = require("../mode/precision");
-				const precision = new Precision();
-				await precision.chat();
-				break;
-
-			default:
-				logger.error(`Undefined Parameter ${mode}`);
-				break;
+	async io () {
+		return {
+			input: async (prompt) => {
+				const answer = await inquirer.prompt([
+					{
+						type: 'input',
+						name: 'answer',
+						message: prompt,
+					}
+				]);
+				return answer.answer;
+			},
+			output: (data) => console.log(chalk.blueBright(data))
 		}
-	}
-
-	async getInput (name) {
-		// 获取输入
-		const {userInput} = await inquirer.prompt([
-			{
-				type: "input",
-				name: "userInput",
-				message: chalk.green(`${name} >`)
-			}
-		]);
-
-		return userInput;
-	}
-
-	async output (msg) {
-		console.log(chalk.blueBright(msg));
 	}
 }
 
