@@ -23,6 +23,10 @@ class Cli {
 				break;
 		}
 	}
+
+	async output () {
+
+	}
 }
 
 module.exports = Cli;
