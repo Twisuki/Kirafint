@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
+const {Command} = require("commander");
 const Cli = require("./io/cli");
 
-async function main () {
+const program = new Command();
+
+program.action(() => {
 	const cli = new Cli();
-	await cli.start();
-}
+	cli.start();
+});
+
+program.parse(process.argv);
