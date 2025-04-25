@@ -4,13 +4,8 @@ const Main = require("../main");
 
 // 主控制
 class Cli {
-	async start () {
-		const main = new Main(await this.io);
-		await main.start();
-	}
-
-	async io () {
-		return {
+	constructor () {
+		this.io = {
 			input: async (prompt) => {
 				const answer = await inquirer.prompt([
 					{
@@ -22,7 +17,11 @@ class Cli {
 				return answer.answer;
 			},
 			output: (msg) => console.log(chalk.blueBright(msg))
-		}
+		};
+	}
+	async start () {
+		const main = new Main(await this.io);
+		await main.start();
 	}
 }
 
