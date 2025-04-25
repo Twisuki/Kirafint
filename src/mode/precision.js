@@ -4,6 +4,7 @@ const Deepseek = require("../ai/deepseek");
 const JsonAnalysis = require("./jsonAnalysis");
 const JsonLoader = require("../config/jsonLoader");
 const logger = require("../utils/logger");
+const cli = require("../cli/cli");
 
 // 读取JSON
 const catalogueData = JsonLoader.getJson("catalogue");
@@ -14,6 +15,7 @@ class Precision {
 	constructor () {
 		this.Deepseek = new Deepseek();
 		this.JsonAnalysis = new JsonAnalysis();
+		this.cli = new cli();
 	}
 
 	async chat () {
