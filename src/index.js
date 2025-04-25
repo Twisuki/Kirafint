@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const {Command} = require("commander");
-const Cli = require("./cli/cli");
+const Cli = require("./io/cli");
 
 const program = new Command();
 program

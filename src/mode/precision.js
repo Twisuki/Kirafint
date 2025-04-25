@@ -2,7 +2,7 @@ const chalk = require("chalk");
 const Deepseek = require("../ai/deepseek");
 const JsonAnalysis = require("./jsonAnalysis");
 const JsonLoader = require("../config/jsonLoader");
-const Cli = require("../cli/cli");
+const Cli = require("../io/cli");
 const logger = require("../utils/logger");
 
 // 读取JSON
