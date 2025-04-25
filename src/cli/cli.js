@@ -40,7 +40,7 @@ class Cli {
 	}
 
 	async output (msg) {
-
+		console.log(chalk.blueBright(msg));
 	}
 }
 

@@ -81,7 +81,7 @@ class Precision {
 		const dsJson = await this.JsonAnalysis.getJson(response);
 		logger.tag("JSON", dsJson);
 
-		console.log(chalk.blueBright("$ Kirafint > ", dsJson.msgResponse));
+		await this.cli.output("$ Kirafint > ", dsJson.msgResponse);
 	}
 
 }
