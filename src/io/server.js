@@ -36,14 +36,13 @@ class Server {
 			}
 		};
 
-		this.wss = new WebSocket.Server({port: userData.wsPort});
 		this.currentWs = null;
-
-		this.setup();
 	}
 
-	setup () {
-		this.wss.on("connection", (ws) => {
+	async start () {
+		const wss = new WebSocket.Server({port: userData.wsPort});
+
+		wss.on("connection", (ws) => {
 			logger.info("客户端已连接");
 			this.currentWs = ws;
 
