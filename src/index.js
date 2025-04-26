@@ -7,8 +7,13 @@ const Server = require("./io/server");
 const program = new Command();
 
 program.action(() => {
-	const cli = new Cli();
-	cli.start();
+	if (0) {
+		const cli = new Cli();
+		cli.start();
+	} else {
+		const server = new Server();
+		server.start();
+	}
 });
 
 program.parse(process.argv);

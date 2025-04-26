@@ -11,7 +11,6 @@
 	// 开始连接
 	socket.onopen = function (event) {
 		console.log("连接已建立");
-		socket.send("Hello server!");
 	}
 
 	// 接收消息
@@ -32,10 +31,6 @@
 	socket.onerror = function (error) {
 		console.error("WebSocket错误: ", error);
 	};
-
-	setInterval(() => {
-		socket.send(Math.random());
-	}, 10000);
 </script>
 </body>
 </html>
