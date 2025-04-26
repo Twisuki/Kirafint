@@ -24,13 +24,18 @@ Kirafint
 │   │   └── user.json
 │   ├── data
 │   │   └── catalogue.json
+│   ├── io
+│   │   ├── cli.js
+│   │   └── server.js
 │   ├── mode
 │   │   ├── jsonAnalysis.js
 │   │   └── precision.js
 │   ├── util
 │   │   └── logger.js
-│   └── index.js
+│   ├── index.js
+│   └── main.js
 ├── .gitignore
+├── index.html
 ├── kf.bat
 ├── package.json
 ├── package-lock.json
@@ -45,6 +50,7 @@ src/config/user.json
 {
 	"name": "Twisuki",
 	"dsKey": YOUR_DEEPSEEK_API_KEY,
+	"wsPort": YOUR_FREE_IP_PORT,
 	"log": {
 		"info": true,
 		"debug": true,
@@ -91,5 +97,5 @@ src/config/user.json
 
 ```bash
 pnpm install
-./kf 1
+./kf
 ```
