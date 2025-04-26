@@ -1,6 +1,11 @@
 const WebSocket = require("ws");
-const Precision = require("../mode/precision");
 const logger = require("../utils/logger")
+const Main = require("../main");
+
+// 主控制
+class Server {
+
+}
 
 const wss = new WebSocket.Server({ port: 2750 });
 
