@@ -4,6 +4,7 @@ const Precision = require("./mode/precision");
 class Main {
 	constructor (io) {
 		this.io = io;
+		this.precision = new Precision(this.io);
 	}
 
 	async start () {
@@ -14,9 +15,7 @@ class Main {
 
 		switch (mode) {
 			case 1:
-				const Precision = require("./mode/precision");
-				const precision = new Precision();
-				await precision.chat();
+				await this.precision.chat();
 				break;
 
 			default:
@@ -34,4 +33,4 @@ class Main {
 	}
 }
 
-module.exports =  Main;
+module.exports = Main;
