@@ -1,6 +1,9 @@
 const WebSocket = require("ws");
 const logger = require("../utils/logger");
 const Main = require("../main");
+const JsonLoader = require("../config/jsonLoader");
+
+const userData = JsonLoader.getJson("user");
 
 class Server {
 	constructor () {
@@ -33,7 +36,7 @@ class Server {
 			}
 		};
 
-		this.wss = new WebSocket.Server({port: 2750});
+		this.wss = new WebSocket.Server({port: userData.wsPort});
 		this.currentWs = null;
 
 		this.setup();
@@ -69,7 +72,7 @@ class Server {
 			this.io.output("欢迎连接 WebSocket 服务器");
 		});
 
-		logger.info("WebSocket 正在监听 2750 端口");
+		logger.info(`WebSocket 正在监听 ${userData.wsPort} 端口`);
 	}
 }
 
