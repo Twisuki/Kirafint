@@ -53,7 +53,8 @@ body {
 
 /* 对话区气泡 */
 .chat {
-	width: 35vw;
+	width: fit-content;
+	max-width: 35vw;
 	color: #ffffff;
 	margin-bottom: 5vh;
 }
@@ -72,9 +73,8 @@ body {
 }
 
 .chat-log {
-	/*background-color: #3b3b3b;*/
+	max-width: 40vw;
 	padding: 0.5em;
-	width: 40vw;
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 1em 1em 1em 1em;
