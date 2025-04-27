@@ -10,22 +10,10 @@ body {
 	font-family: HYTMR,"sans-serif"
 }
 
-/*body::after {*/
-/*	content: "";*/
-/*	position: absolute;*/
-/*	top: 0;*/
-/*	left: 0;*/
-/*	right: 0;*/
-/*	bottom: 0;*/
-/*	background-color: rgba(0, 0, 0, 0);*/
-/*	backdrop-filter: blur(0px) brightness(50%);*/
-/*	pointer-events: none;*/
-/*}*/
-
 #main {
 	width: 50vw;
 	height: 70vh;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 1em;
 	z-index: 1;
 }
@@ -38,6 +26,26 @@ body {
 	margin-top: 2.5vh;
 	margin-left: 2.5vw;
 	padding: 1em;
+	overflow-y: scroll;
+}
+
+#chat-box::-webkit-scrollbar {
+	width: 0.5em;
+}
+
+#chat-box::-webkit-scrollbar-track {
+	opacity: 100%;
+}
+
+#chat-box::-webkit-scrollbar-thumb{
+	background-color: #ffffff;
+	border-radius: 6px;
+	border: 2px solid #00000000;
+	background-clip: content-box;
+}
+
+#chat-box::-webkit-scrollbar-thumb:hover{
+	background-color: #dddddda0;
 }
 
 #input-box {
