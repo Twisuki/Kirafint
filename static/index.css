@@ -1,0 +1,44 @@
+body {
+	background-image: url("./img/shizuku.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+/*body::after {*/
+/*	content: "";*/
+/*	position: absolute;*/
+/*	top: 0;*/
+/*	left: 0;*/
+/*	right: 0;*/
+/*	bottom: 0;*/
+/*	background-color: rgba(0, 0, 0, 0);*/
+/*	backdrop-filter: blur(0px) brightness(50%);*/
+/*	pointer-events: none;*/
+/*}*/
+
+#main {
+	width: 50vw;
+	height: 70vh;
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 2em;
+	z-index: 1;
+}
+
+.tabler--send {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	--svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M10 14L21 3m0 0l-6.5 18a.55.55 0 0 1-1 0L10 14l-7-3.5a.55.55 0 0 1 0-1z'/%3E%3C/svg%3E");
+	background-color: currentColor;
+	-webkit-mask-image: var(--svg);
+	mask-image: var(--svg);
+	-webkit-mask-repeat: no-repeat;
+	mask-repeat: no-repeat;
+	-webkit-mask-size: 100% 100%;
+	mask-size: 100% 100%;
+}

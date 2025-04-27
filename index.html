@@ -3,8 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Kirafint - 基于Deepseek API和本地模型的AI Demo</title>
+	<link rel="stylesheet" href="./static/index.css"/>
 </head>
 <body>
+
+<div id="main">
+	<div id="chat-box">
+		<div class="chat chat-server">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet aspernatur atque cumque delectus distinctio eveniet exercitationem, natus nihil nulla possimus quas qui quod sequi similique. Eligendi enim incidunt veniam.
+		</div>
+		<div class="chat chat-user">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolore eligendi, facere fuga fugiat id inventore nostrum repellendus sequi tempora vel veritatis voluptatum! Aliquam corporis cumque non rem, ullam vero.
+		</div>
+		<div class="chat chat-log">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis dicta doloribus, eaque est fugit ipsum laudantium magnam natus nisi officiis optio pariatur quae quis reiciendis rem suscipit vero voluptates.
+		</div>
+	</div>
+	<div id="input">
+		<label for="input-text"></label>
+		<input type="text" id="input-text" />
+		<button><span class="tabler--send"></span></button>
+	</div>
+</div>
+
+<script src="./static/index.js"></script>
 <script>
 	const socket = new WebSocket("ws://localhost:2750");
 
