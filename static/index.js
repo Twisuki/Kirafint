@@ -1,11 +1,23 @@
 function logger (msg) {
 	const newDiv = `<div class="log"><span>[LOG]</span>\n${msg}</div>`;
-	document.getElementById("chat-box").insertAdjacentHTML('beforeend', newDiv);
+	const chatBox = document.getElementById("chat-box");
+	chatBox.insertAdjacentHTML('beforeend', newDiv);
+
+	chatBox.scrollTo({
+		top: chatBox.scrollHeight,
+		behavior: 'smooth'
+	});
 }
 
 function showMsg (msg) {
 	const newDiv = `<div class="chat chat-server"><span>[SERVER]</span>\n${msg}</div>`;
-	document.getElementById("chat-box").insertAdjacentHTML('beforeend', newDiv);
+	const chatBox = document.getElementById("chat-box");
+	chatBox.insertAdjacentHTML('beforeend', newDiv);
+
+	chatBox.scrollTo({
+		top: chatBox.scrollHeight,
+		behavior: 'smooth'
+	});
 }
 
 function sendMsg () {
@@ -22,7 +34,13 @@ function sendMsg () {
 	inputText.readOnly = true;
 
 	const newDiv = `<div class="chat chat-user"><span>[USER]</span>\n${msg}</div>`;
-	document.getElementById("chat-box").insertAdjacentHTML('beforeend', newDiv);
+	const chatBox = document.getElementById("chat-box");
+	chatBox.insertAdjacentHTML('beforeend', newDiv);
+
+	chatBox.scrollTo({
+		top: chatBox.scrollHeight,
+		behavior: 'smooth'
+	});
 }
 
 function getInput (prompt) {
