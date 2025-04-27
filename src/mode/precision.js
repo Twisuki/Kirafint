@@ -21,6 +21,7 @@ class Precision {
 
 		// 初始化
 		await this.chatInit(msg);
+		this.io.output("Initialization Completed, please type in your question.");
 
 		while (1) {
 			// 获取输入
