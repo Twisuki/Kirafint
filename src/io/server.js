@@ -19,7 +19,8 @@ class Server {
 					throw new Error("No client connected");
 				}
 
-				this.currentSocket.send(prompt);
+				const content = {input: true, msg: prompt};
+				this.currentSocket.send(JSON.stringify(content));
 
 				// 返回一个Promise，等待客户端响应
 				return new Promise((resolve) => {
@@ -29,7 +30,8 @@ class Server {
 			},
 			output: (msg) => {
 				if (this.currentSocket) {
-					this.currentSocket.send(msg);
+					const content = {input: false, msg: msg};
+					this.currentSocket.send(JSON.stringify(content));
 				}
 			}
 		};

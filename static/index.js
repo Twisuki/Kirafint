@@ -13,6 +13,10 @@ function sendMsg (msg) {
 	document.getElementById("chat-box").insertAdjacentHTML('beforeend', newDiv);
 }
 
+function getInput () {
+	logger("get input")
+}
+
 const socket = new WebSocket("ws://localhost:2750");
 
 logger("等待建立连接 ...");
@@ -23,7 +27,15 @@ socket.onopen = function (event) {
 
 	// 接收消息
 	socket.onmessage = function (event) {
-		getMsg(event.data);
+		try {
+			const json = JSON.parse(event.data);
+			getMsg(json.msg);
+			if (json.input) {
+				getInput();
+			}
+		} catch (err) {
+			logger(`收发错误: ${err}`)
+		}
 	}
 
 	// 关闭连接

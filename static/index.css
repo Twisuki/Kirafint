@@ -56,7 +56,7 @@ body {
 	width: fit-content;
 	max-width: 35vw;
 	color: #ffffff;
-	margin-bottom: 5vh;
+	margin-bottom: 1em;
 }
 
 .chat-server {
@@ -83,7 +83,7 @@ body {
 .log {
 	width: fit-content;
 	max-width: 40vw;
-	padding: 0.5em 0 0 0;
+	padding: 0 0 0.5em 0;
 	color: #ffffff;
 	margin-left: auto;
 	margin-right: auto;
