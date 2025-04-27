@@ -10,6 +10,7 @@ body {
 	font-family: HYTMR,"sans-serif"
 }
 
+/* 主容器 */
 #main {
 	width: 50vw;
 	height: 70vh;
@@ -18,6 +19,7 @@ body {
 	z-index: 1;
 }
 
+/* 对话框 */
 #chat-box {
 	width: calc(45vw - 2em);
 	height: calc(50vh - 2em);
@@ -29,6 +31,7 @@ body {
 	overflow-y: scroll;
 }
 
+/* 对话框滑动条 */
 #chat-box::-webkit-scrollbar {
 	width: 0.5em;
 }
@@ -48,6 +51,48 @@ body {
 	background-color: #dddddda0;
 }
 
+/* 对话区气泡 */
+.chat {
+	width: 35vw;
+	color: #ffffff;
+	margin-bottom: 5vh;
+}
+
+.chat-server {
+	background-color: #3b3b3b;
+	padding: 0.5em;
+	border-radius: 0 1em 1em 1em;
+}
+
+.chat-user {
+	background-color: #0066cc;
+	padding: 0.5em;
+	margin-left: auto;
+	border-radius: 1em 1em 0 1em;
+}
+
+.chat-log {
+	/*background-color: #3b3b3b;*/
+	padding: 0.5em;
+	width: 40vw;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 1em 1em 1em 1em;
+}
+
+.chat-server > span {
+	color: #00aa00;
+}
+
+.chat-user > span {
+	color: #ffaa40;
+}
+
+.chat-log > span {
+	color: #00ffff;
+}
+
+/* 输入区 */
 #input-box {
 	width: 45vw;
 	height: 10vh;
@@ -58,16 +103,20 @@ body {
 	display: flex;
 }
 
+/* 输入框 */
 #input-box > #input-text {
 	flex: 8;
 	margin: 2vh 1vh 2vh 2vh;
 }
 
+/* 发送按钮 */
 #input-box > #input-btn {
 	flex: 2;
 	margin: 2vh 2vh 2vh 1vh;
 }
 
+
+/* 发送按钮图标 */
 .tabler--send {
 	display: inline-block;
 	width: 24px;
@@ -82,6 +131,7 @@ body {
 	mask-size: 100% 100%;
 }
 
+/* 自定义字体 */
 @font-face {
     font-family: 'HYTMR';
     font-display: swap;
