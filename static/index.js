@@ -15,22 +15,24 @@ function sendMsg (msg) {
 
 const socket = new WebSocket("ws://localhost:2750");
 
+logger("等待建立连接 ...");
+
 // 连接成功
 socket.onopen = function (event) {
 	logger("连接已建立.");
-}
 
-// 接收消息
-socket.onmessage = function (event) {
-	getMsg(event.data);
-}
+	// 接收消息
+	socket.onmessage = function (event) {
+		getMsg(event.data);
+	}
 
-// 关闭连接
-socket.onclose = function (event) {
-	if (event.wasClean) {
-		logger("连接已关闭.");
-	} else {
-		logger(`连接异常关闭, Code: ${event.code} Reason: ${event.reason}`);
+	// 关闭连接
+	socket.onclose = function (event) {
+		if (event.wasClean) {
+			logger("连接已关闭.");
+		} else {
+			logger(`连接异常关闭, Code: ${event.code} Reason: ${event.reason}`);
+		}
 	}
 }
 
