@@ -72,14 +72,6 @@ body {
 	border-radius: 1em 1em 0 1em;
 }
 
-.chat-log {
-	max-width: 40vw;
-	padding: 0.5em;
-	margin-left: auto;
-	margin-right: auto;
-	border-radius: 1em 1em 1em 1em;
-}
-
 .chat-server > span {
 	color: #00aa00;
 }
@@ -88,7 +80,16 @@ body {
 	color: #ffaa40;
 }
 
-.chat-log > span {
+.log {
+	width: fit-content;
+	max-width: 40vw;
+	padding: 0.5em 0 0 0;
+	color: #ffffff;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.log > span {
 	color: #00ffff;
 }
 
