@@ -3,18 +3,38 @@ function logger (msg) {
 	document.getElementById("chat-box").insertAdjacentHTML('beforeend', newDiv);
 }
 
-function getMsg (msg) {
+function showMsg (msg) {
 	const newDiv = `<div class="chat chat-server"><span>[SERVER]</span>\n${msg}</div>`;
 	document.getElementById("chat-box").insertAdjacentHTML('beforeend', newDiv);
 }
 
-function sendMsg (msg) {
+function sendMsg () {
+	const inputText = document.getElementById('input-text');
+	if (inputText.readOnly) {
+		return
+	}
+
+	const msg = inputText.value.trim();
+	socket.send(msg);
+
+	inputText.value = "";
+	inputText.placeholder = "消息已发送";
+	inputText.readOnly = true;
+
 	const newDiv = `<div class="chat chat-user"><span>[USER]</span>\n${msg}</div>`;
 	document.getElementById("chat-box").insertAdjacentHTML('beforeend', newDiv);
 }
 
-function getInput () {
-	logger("get input")
+function getInput (prompt) {
+	const inputText = document.getElementById("input-text");
+	inputText.placeholder = prompt;
+
+	document.getElementById("input-btn").addEventListener("click", sendMsg);
+	inputText.addEventListener("keypress", (event) => {
+		if (event.key === "Enter") {
+			sendMsg();
+		}
+	})
 }
 
 const socket = new WebSocket("ws://localhost:2750");
@@ -29,9 +49,11 @@ socket.onopen = function (event) {
 	socket.onmessage = function (event) {
 		try {
 			const json = JSON.parse(event.data);
-			getMsg(json.msg);
 			if (json.input) {
-				getInput();
+				document.getElementById("input-text").readOnly = false;
+				getInput(json.msg);
+			} else {
+				showMsg(json.msg);
 			}
 		} catch (err) {
 			logger(`收发错误: ${err}`)
