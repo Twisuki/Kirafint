@@ -19,32 +19,5 @@
 </div>
 
 <script src="./static/index.js"></script>
-<script>
-	const socket = new WebSocket("ws://localhost:2750");
-
-	// 开始连接
-	socket.onopen = function (event) {
-		console.log("连接已建立");
-	}
-
-	// 接收消息
-	socket.onmessage = function (event) {
-		console.log(`接收到: ${event.data}`);
-	}
-
-	// 关闭连接
-	socket.onclose = function (event) {
-		if (event.wasClean) {
-			console.log("连接已关闭");
-		} else {
-			console.log("连接异常关闭");
-		}
-		console.log(`Code: ${event.code} Reason: ${event.reason}`);
-	}
-
-	socket.onerror = function (error) {
-		console.error("WebSocket错误: ", error);
-	};
-</script>
 </body>
 </html>
