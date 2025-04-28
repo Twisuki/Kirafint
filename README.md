@@ -1,6 +1,6 @@
 # Kirafint, 基于Deepseek API和本地模型的AI Demo
 
-[Twisuki](https://twis/uk)
+[Twisuki](https://twis.uk)
 
 ---
 
