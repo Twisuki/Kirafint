@@ -19,6 +19,7 @@ class Cli {
 			output: (msg) => console.log(chalk.blueBright(msg))
 		};
 	}
+
 	async start () {
 		const main = new Main(await this.io);
 		await main.start();

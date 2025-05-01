@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const Deepseek = require("../ai/deepseek");
 const JsonAnalysis = require("./jsonAnalysis");
 const JsonLoader = require("../config/jsonLoader");
