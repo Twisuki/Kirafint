@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const logger = require("../utils/logger");
 
 class JsonAnalysis {
 	constructor () {
@@ -10,13 +10,13 @@ class JsonAnalysis {
 		const result = msg.match(regex);
 
 		if (!result) {
-			console.error(chalk.red("No regex matched!"));
+			logger.error("No regex matched!");
 		}
 
 		try {
 			return JSON.parse(result[0]).json;
 		} catch (err) {
-			console.error(chalk.red("Illegal JSON format!"))
+			logger.error("Illegal JSON format!");
 		}
 	}
 }
