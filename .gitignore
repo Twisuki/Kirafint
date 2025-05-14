@@ -2,6 +2,6 @@
 .vscode/
 node_modules/
 src/config/user.json
-#自动生成文件无需跟踪
+# 自动生成文件无需跟踪
 package-lock.json
 pnpm-lock.yaml

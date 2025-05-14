@@ -89,11 +89,13 @@ src/config/user.json
 
 .gitignore
 ```.gitignore
-.gitignore
 .idea/
 .vscode/
 node_modules/
 src/config/user.json
+
+package-lock.json
+pnpm-lock.yaml
 
 ```
 
