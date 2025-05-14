@@ -4,9 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "node src/index.js -m MODE",
-		"dev": "node src/index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"help": "node src/index.js",
+		"cil": "node src/index.js -c",
+		"serve": "node src/index.js -s"
 	},
 	"keywords": [],
 	"author": "",
